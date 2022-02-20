@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; " />
+    <title>News grid</title>
+    <script src="https://kit.fontawesome.com/17b1c8525b.js" crossorigin="anonymous"></script>
+    <link href="/your-path-to-fontawesome/css/all.css" rel="stylesheet">
+
+  </head>
+  <style type="text/css">
+    :root{
+--primary--color: #c72727;
+  --secondary--color: #f99500;
+  --light--color: #f3f3f3;
+  --dark--color: #333;
+ --sports--color: #f99500;
+  --ent--color: #a66bbe;
+  --tech--color: #009cff;
+    }
+    *{
+    margin:0;
+    padding:0;
+    text-decoration:none;
+    list-style:none;
+    }
+a{
+    color:white;
+}
+ body{
+font-family:arial;
+font-size:20px;
+background:var(--light--color);
+}
+    /*Utility classes*/
+  
+    h1,h2,h3,h4,h5,h6,img{
+    margin:0.5rem 0;
+    }
+  .container{
+   max-width:1100px;
+   margin:auto;
+   box-sizing:border-box;
+    padding:0 2rem;
+    overflow:hidden;
+    }
+    p{
+    line-height:1.5;
+margin:0.5rem 0;
+    }
+.p-one{
+padding:0 1.5rem;
+}
+.p-two{
+padding:0 2rem;
+}
+.large-text{
+font-size:1.5rem;
+}
+.card{
+background:#fff;
+padding:1.5rem;
+}
+.bg-primary{
+background:var(--primary--color);
+color:#fff;
+}
+
+.bg-dark{
+background:var(--dark--color);
+color:#fff;
+}
+.list li{
+margin:1rem 0;
+padding:0.5rem 0;
+border-bottom:#555 1px dotted;
+width:90%;
+}
+
+.list li a:hover {
+color:var(--primary--color) !important;
+}
+
+    .category{
+    display:inline-block;
+    text-transform:uppercase;
+    padding:0.5rem ;
+    border-radius:20px;
+    margin-bottom:0.5rem;
+color:#fff;
+    }
+     .category-sports{
+    background:var(--sports--color);
+    }
+
+     .category-ent{
+    background:var(--ent--color);
+    }
+.category-tech{
+    background:var(--tech--color);
+    }
+    .btn{
+    display:inline-block;
+    color:#fff;
+    text-transform:uppercase;
+    padding:0.4rem ;
+border:none;
+    
+    margin-top:1.5rem;
+    }
+    .btn:hover{
+    opacity:0.4;
+    
+    }
+    .btn-primary{
+    background:var(--primary--color);
+    }
+
+.btn-secondary{
+    background:var(--sports--color);
+padding:0.5rem 2rem;
+    }
+    #navbar{
+    background:#fff;
+    padding:1rem;
+    }
+    .nav-container{
+    display:grid;
+    grid-template-columns:5fr 4fr 2fr;
+    }
+    #navbar .container ul{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-gap:1rem;
+    padding:0.5rem;
+    }
+    #navbar .container ul a{
+    color:black;
+    padding:0.5rem;
+    }
+    #navbar .container ul a.current{
+    color:#fff;
+    background:var(--primary--color);
+    }
+    #navbar .container ul a:hover{
+    background:var(--light--color);
+    color:black;
+    }
+    #showcase{
+    color:white;
+    background:#333;
+    padding:2rem;
+    position:relative;
+    }
+    #showcase:before{
+    content:'';
+    background:url("./img/featured.jpg") no-repeat center center/cover;
+    position:absolute;
+    top:0;
+    left:0;
+    opacity:0.4;
+    width:100%;
+    height:100%;
+    }
+    #showcase .showcase-container{
+    display:grid;
+    grid-template-columns:3fr 1fr;
+    justify-content:center;
+    align-items:center;
+    height:50vh;
+    }
+    #showcase .showcase-content{
+    z-index:1;
+padding:0 10rem;
+    }
+
+
+#home-articles img{
+width:80%;
+padding:1.5rem;
+}
+#home-articles {
+padding:2rem;
+}
+#home-articles  #articles-container{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+grid-gap:1rem;
+
+}
+#home-articles  #articles-container > *:first-child{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+grid-gap:1rem;
+grid-column:1 / span 2;
+justify-content:center;
+
+}
+
+
+#home-articles  #articles-container > *:nth-child(7){
+display:grid;
+grid-template-columns:repeat(2,1fr);
+grid-column:2 / span 2;
+justify-content:center;
+
+}
+
+#main-footer .footer-container{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+grid-gap:1rem;
+padding:1rem 1.5rem;
+}
+#main-footer .footer-container div:last-child{
+padding:0 2rem;
+}
+#main-footer .footer-container ul li{
+
+}
+#main-footer .footer-container input{
+margin-top:1.5rem;
+padding:0 0.5rem;
+height:2rem;
+width:10rem;
+}
+
+.footer{
+background:#444;
+color:white;
+grid-column:1 / span 4;
+padding:1rem 0;
+text-align:center;
+}
+  </style>
+  <style>
+    @media only screen and (max-width:768px){
+    body{
+        font-size:1rem;
+        }
+            .nav-container{
+              display:grid;
+              grid-template-columns:auto;
+        grid-gap:1rem;
+        justify-content:center;
+              }
+    #navbar #social{
+    display:none;
+    }
+    #showcase .showcase-container{
+        grid-template-columns:1fr;
+        height:60vh;
+        }
+        #showcase .showcase-content{
+       padding:0rem;
+        }
+        #home-articles{
+        
+        text-align:center;
+        }
+        #home-articles  #articles-container{
+        grid-template-columns:repeat(2,1fr);
+        justify-self:center;
+        }
+        #home-articles  #articles-container > *:first-child,
+        #home-articles  #articles-container > *:nth-child(7){
+        display:grid;
+        grid-template-columns:1fr;
+        grid-gap:1rem;
+        justify-content:center;
+        grid-column:1;
+        }
+        #main-footer .footer-container{
+        display:grid;
+        grid-template-columns:2fr;
+        }
+        .footer{
+        grid-column:1 / span 2;
+        }
+        
+        }
+
+@media only screen and (max-width:500px){
+  #home-articles{
+        
+        text-align:center;
+        }
+        #home-articles  #articles-container{
+        grid-template-columns:1fr;
+        justify-self:center;
+        }
+        #home-articles  #articles-container > *:first-child,
+        #home-articles  #articles-container > *:nth-child(7){
+        display:grid;
+        grid-template-columns:1fr;
+        grid-gap:1rem;
+        justify-content:center;
+        grid-column:1;
+        }
+        #main-footer .footer-container{
+        display:grid;
+        grid-template-columns:1fr;
+        }
+        .footer{
+        grid-column:1;
+        }
+        
+        }
+  </style>
+
+  <body>
+    <nav id="navbar">
+      <div class="container">
+        <div class="nav-container">
+          <div id="main-logo">
+            <img src="./img/logo.png" width="150px">
+          </div>
+          <div id="social">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+          <div>
+            <ul>
+              <li><a class="current" href="index.html">Home</a>
+              </li>
+              <li><a href="about.html">About</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <header id="showcase">
+      <div class="container">
+        <div class="showcase-container">
+          <div class="showcase-content">
+            <div class="category category-sports">Sports</div>
+            <h1>Sports related articles</h1>
+            <p>Lorem ipsum dolor sit amet adipiscing bibendum sem orci tempus aliquet
+              gravida, orci amet iaculis aptent blandit quam accumsan donec in
+              non cubilia lorem et pretium aliquam phasellus
+            </p>
+            <a href="article.html" class="btn btn-primary">Read more</a>
+          </div>
+        </div>
+      </div>
+    </header>
+    <section id="home-articles" class="py-2">
+      </div class="container">
+      <h1 class="p-1">Editors Pick
+      </h1>
+
+      <div id="articles-container">
+        <article class="card">
+
+          <img src="./img/ent1.jpg">
+          <div>
+            <div class="category category-ent">Entertainment</div>
+            <h2>Lorem ipsum dolor sit amet adipiscing</h2>
+            <p> Lorem ipsum dolor sit amet adipiscing bibendum sem orci tempus aliquet
+              gravida, orci amet iaculis aptent blandit quam accumsan donec in
+              facilisis, cursus ante curabitur aliquet condimentum tincidunt facilisis
+              non cubilia lorem et pretium aliquam phasellus ipsum metus quisque
+              auctor tristique donec nibh, praesent
+            </p>
+          </div>
+        </article>
+        <article class="card bg-dark">
+          <div class="category category-sports">sports</div>
+          <h2>Lorem ipsum dolor sit amet adipiscing</h2>
+          <p> Lorem ipsum dolor sit amet adipiscing bibendum sem orci tempus aliquet
+            gravida, orci amet iaculis aptent blandit quam accumsan donec in facilisis,
+            cursus ante curabitur aliquet condimentum tincidunt facilisis non cubilia
+            lorem et pretium aliquam phasellus ipsum metus quisque auctor tristique
+            donec nibh, praesent
+          </p>
+        </article>
+        <article class="card">
+          <img src="./img/tech1.jpg">
+          <div>
+            <div class="category category-tech">Technology
+            </div>
+            <h2>Lorem ipsum dolor sit amet adipiscing</h2>
+            <p> Lorem ipsum dolor sit amet adipiscing bibendum sem orci tempus aliquet
+              gravida, orci amet iaculis aptent blandit quam accumsan donec in
+              facilisis, cursus ante curabitur aliquet condimentum tincidunt facilisis
+              non cubilia lorem et pretium aliquam phasellus ipsum metus quisque
+              auctor tristique donec nibh, praesent
+            </p>
+          </div>
+        </article>
+        <article class="card">
+          <div>
+            <div class="category category-sports">sports</div>
+            <h2>Lorem ipsum dolor sit amet adipiscing</h2>
+            <p> Lorem ipsum dolor sit amet adipiscing bibendum sem orci tempus aliquet
+              gravida, orci amet iaculis aptent blandit quam accumsan donec in
+              facilisis, cursus ante curabitur aliquet condimentum tincidunt facilisis
+              non cubilia lorem et pretium aliquam phasellus ipsum metus quisque
+              auctor tristique donec nibh, praesent
+            </p>
+          </div>
+          <img src="./img/sports1.jpg">
+        </article>
+        <article class="card">
+          <img src="./img/tech2.jpg" width=40%;>
+          <div>
+            <div class="category category-tech">Technology
+            </div>
+            <h2>Lorem ipsum dolor sit amet adipiscing</h2>
+            <p> Lorem ipsum dolor sit amet adipiscing bibendum sem orci tempus aliquet
+              gravida, orci amet iaculis aptent blandit quam accumsan donec in
+              facilisis, cursus ante curabitur aliquet condimentum tincidunt facilisis
+              non cubilia lorem et pretium aliquam phasellus ipsum metus quisque
+              auctor tristique donec nibh, praesent
+            </p>
+          </div>
+        </article>
+        <article class="card bg-primary">
+          <div class="category category-sports">sports</div>
+          <h2>Lorem ipsum dolor sit amet adipiscing</h2>
+          <p> Lorem ipsum dolor sit amet adipiscing bibendum sem orci tempus aliquet
+            gravida, orci amet iaculis aptent blandit quam accumsan donec in facilisis,
+            cursus ante curabitur aliquet condimentum tincidunt facilisis non cubilia
+            lorem et pretium aliquam phasellus ipsum metus quisque auctor tristique
+            donec nibh, praesent
+          </p>
+        </article>
+        <article class="card">
+          <div>
+            <div class="category category-ent">Entertainment</div>
+            <h2>Lorem ipsum dolor sit amet adipiscing</h2>
+            <p> Lorem ipsum dolor sit amet adipiscing bibendum sem orci tempus aliquet
+              gravida, orci amet iaculis aptent blandit quam accumsan donec in
+              facilisis, cursus ante curabitur aliquet condimentum tincidunt facilisis
+              non cubilia lorem et pretium aliquam phasellus ipsum metus quisque
+              auctor tristique donec nibh, praesent
+            </p>
+          </div>
+          <img src="./img/ent2.jpg">
+        </article>
+      </div>
+      </div>
+    </section>
+    <footer id="main-footer" class="bg-dark">
+
+      <div class="container footer-container">
+        <div>
+          <img src="./img/logo_light.png" width=70%>
+          <p>
+            Lorem ipsum dolor sit amet adipiscing bibendum sem orci tempus aliquet gravida,
+            orci amet iaculis aptent blandit quam accumsan
+          </p>
+        </div>
+        <div>
+          <h3>EMAIL NEWSLETTER</h3>
+
+          <p>Lorem ipsum dolor sit amet adipiscing bibendum </p>
+          <form>
+            <input type="email" placeholder="Enter your email" name="email" id="Email">
+            <input type="submit" value="Subscribe" class="btn btn-primary">
+        </div>
+        <div>
+          <h3>SITE LINKS</h3>
+
+          <ul class="list">
+            <li><a href="#">Help&Support</a>
+            </li>
+            <li><a href="#">Privacy Policy</a</li>
+              <li><a href="#">About us</li>
+              <li><a href="#">Contact</a>
+            </li>
+          </ul>
+
+        </div>
+        <div>
+          <p>Lorem ipsum dolor</p>
+          <h2>JOIN OUR CLUB</h2>
+          <p>Lorem ipsum dolor sit amet adipiscing sem orci</p>
+          <a href="#" class="btn btn-secondary">JOIN</a>
+        </div>
+        <div class="footer">
+          <p>Copyright © 2021 all rights reserved
+            <p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>
+<!--
+Visual Code Mobile
+Developed By Manish Nirmal
+App Available on Play Store :-
+https://play.google.com/store/apps/details?id=lk.visual.code.mobile
+YouTube :-
+https://youtube.com/ManishNirmal
+-->

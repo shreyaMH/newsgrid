@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; " />
+    <title>News grid</title>
+    <script src="https://kit.fontawesome.com/17b1c8525b.js" crossorigin="anonymous"></script>
+    <link href="/your-path-to-fontawesome/css/all.css" rel="stylesheet">
+  </head>
+  <style type="text/css">
+    :root{
+--primary--color: #c72727;
+  --secondary--color: #f99500;
+  --light--color: #f3f3f3;
+  --dark--color: #333;
+ --sports--color: #f99500;
+  --ent--color: #a66bbe;
+  --tech--color: #009cff;
+    }
+    *{
+    margin:0;
+    padding:0;
+    
+    text-decoration:none;
+    list-style:none;
+    }
+a{
+    color:white;
+}
+ body{
+font-family:arial;
+font-size:20px;
+background:var(--light--color);
+}
+    /*Utility classes*/
+  
+    h1,h2,h3,h4,h5,h6,img{
+    margin:0.5rem 0;
+    }
+  .container{
+   max-width:1100px;
+   margin:auto;
+   box-sizing:border-box;
+    padding:0 2rem;
+    overflow:hidden;
+    }
+    p{
+    line-height:1.5;
+margin:0.5rem 0;
+    }
+.l-heading{
+font-size:1.5rem;
+text-transform:uppercase;
+}
+.p-one{
+padding:0 1.5rem;
+}
+.p-two{
+padding:0 2rem;
+}
+
+.card{
+background:#fff;
+padding:1.5rem;
+}
+.bg-primary{
+background:var(--primary--color);
+color:#fff;
+}
+.bg-secondary{
+background:var(--secondary--color);
+color:#fff;}
+.bg-dark{
+background:var(--dark--color);
+color:#fff;
+}
+.bg-light{
+background:var(--light--color);
+color:black;
+}
+.list li{
+margin:1rem 0;
+padding:0.5rem 0;
+border-bottom:#555 1px dotted;
+width:90%;
+}
+
+.list li a:hover {
+color:var(--primary--color) !important;
+}
+
+    .category{
+    display:inline-block;
+    text-transform:uppercase;
+    padding:0.5rem ;
+    border-radius:15px;
+    margin-bottom:0.5rem;
+color:#fff;
+    }
+     .category-sports{
+    background:var(--sports--color);
+    }
+
+     .category-ent{
+    background:var(--ent--color);
+    }
+.category-tech{
+    background:var(--tech--color);
+    }
+.categories a{
+color:black;
+}
+    .btn{
+    display:inline-block;
+    color:#fff;
+    text-transform:uppercase;
+    padding:0.4rem ;
+border:none;
+    margin-top:1.5rem;
+    }
+
+    .btn:hover{
+    opacity:0.4;
+    
+    }
+
+    .btn-primary{
+    background:var(--primary--color);
+    }
+
+.btn-secondary{
+    background:var(--sports--color);
+padding:0.5rem 2rem;
+    }
+.btn-block{
+display:block;
+width:100%;
+text-align:center;
+}
+.btn-dark{
+background:#333;
+color:#fff;
+}
+    #navbar{
+    background:#fff;
+    padding:1rem;
+    }
+    .nav-container{
+    display:grid;
+    grid-template-columns:5fr 4fr 2fr;
+    }
+    #navbar .container ul{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-gap:1rem;
+    padding:0.5rem;
+    }
+    #navbar .container ul a{
+    color:black;
+    padding:0.5rem;
+    }
+    #navbar .container ul a.current{
+    color:#fff;
+    background:var(--primary--color);
+    }
+    #navbar .container ul a:hover{
+    background:var(--light--color);
+    color:black;
+    }
+
+/* Inner page grid container */
+.article-container img{
+width:100%;
+}
+.article-container {
+  display: grid;
+  grid-template-columns: 5fr 2fr;
+  margin: 2rem 0;
+  grid-gap: 1.5rem;
+}
+.article-container .meta{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0.5rem;
+}
+.article-container > *:first-child {
+  grid-row: 1 / span 3;
+}
+
+#main-footer .footer-container{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+grid-gap:1rem;
+padding:1rem 1.5rem;
+}
+#main-footer .footer-container div:last-child{
+padding:0 2rem;
+}
+#main-footer .footer-container ul li{
+
+}
+#main-footer .footer-container input{
+margin-top:1.5rem;
+padding:0 0.5rem;
+height:2rem;
+width:10rem;
+}
+
+.footer{
+background:#444;
+color:white;
+grid-column:1 / span 4;
+padding:1rem 0;
+text-align:center;
+}
+  </style>
+  <style>
+    @media only screen and (max-width:768px){
+    body{
+        font-size:1rem;
+        }
+            .nav-container{
+              display:grid;
+              grid-template-columns:auto;
+        grid-gap:1rem;
+        justify-content:center;
+              }
+    #navbar #social{
+    display:none;
+    }
+    #showcase .showcase-container{
+        grid-template-columns:1fr;
+        height:60vh;
+        }
+        #showcase .showcase-content{
+       padding:0rem;
+        }
+        #home-articles{
+        
+        text-align:center;
+        }
+        #home-articles  #articles-container{
+        grid-template-columns:repeat(2,1fr);
+        justify-self:center;
+        }
+        #home-articles  #articles-container > *:first-child,
+        #home-articles  #articles-container > *:nth-child(7){
+        display:grid;
+        grid-template-columns:1fr;
+        grid-gap:1rem;
+        justify-content:center;
+        grid-column:1;
+        }
+.article-container {
+  display: grid;
+  grid-template-columns: repeat(1,auto);
+}
+        #main-footer .footer-container{
+        display:grid;
+        grid-template-columns:2fr;
+        }
+        .footer{
+        grid-column:1 / span 2;
+        }
+        
+        }
+
+@media only screen and (max-width:500px){
+  #home-articles{
+        
+        text-align:center;
+        }
+        #home-articles  #articles-container{
+        grid-template-columns:1fr;
+        justify-self:center;
+        }
+        #home-articles  #articles-container > *:first-child,
+        #home-articles  #articles-container > *:nth-child(7){
+        display:grid;
+        grid-template-columns:1fr;
+        grid-gap:1rem;
+        justify-content:center;
+        grid-column:1;
+        }
+        #main-footer .footer-container{
+        display:grid;
+        grid-template-columns:1fr;
+        }
+        .footer{
+        grid-column:1;
+        }
+        
+        }
+  </style>
+
+  <body>
+    <nav id="navbar">
+      <div class="container">
+        <div class="nav-container">
+          <div id="main-logo">
+            <img src=" ./img/logo.png " width="150px ">
+          </div>
+          <div id="social ">
+            <a href="# "><i class="fab fa-facebook "></i></a>
+            <a href="# "><i class="fab fa-twitter "></i></a>
+            <a href="# "><i class="fab fa-instagram "></i></a>
+            <a href="# "><i class="fab fa-youtube "></i></a>
+          </div>
+          <div>
+            <ul>
+              <li><a href="index.html ">Home</a>
+              </li>
+              <li><a href="about.html ">About</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <section id="article ">
+      <div class="container ">
+        <div class="article-container ">
+          <article class="card ">
+            <img src="../img/articles/ent1.jpg ">
+            <h2 class="l-heading ">Lorem ipsum dolor sit amet</h2>
+            <div class="meta bg-light ">
+              <div>
+                <small>Written by Someone Strange August 2020</small>
+              </div>
+              <div class="category category-ent ">Entertainment</div>
+            </div>
+            <p>Lorem cursus ante curabitur aliquet condimentum tincidunt facilisis
+              non cubilia lorem et pretium aliquam phasellus ipsum metus quisque
+              auctor tristique donec nibh, praesent congue ultricies aenean ornare
+              ligula sagittis proin sed vestibulum purus tempus aenean neque aliquam
+              curae vivamus purus egestas ligula tincidunt nullam. </p>
+            <p>Lorem ipsum dolor sit amet adipiscing bibendum sem orci tempus aliquet
+              gravida, orci amet iaculis aptent blandit quam accumsan donec in
+              facilisis, cursus ante curabitur aliquet condimentum tincidunt facilisis
+              non cubilia lorem et pretium aliquam phasellus ipsum metus quisque
+              auctor tristique donec nibh, praesent congue ultricies aenean ornare
+              ligula sagittis proin sed vestibulum purus tempus aenean neque aliquam
+              curae vivamus purus egestas ligula tincidunt nullam. </p>
+          </article>
+          <aside class="card categories ">
+            <h2 class="l-heading ">Categories</h2>
+            <ul class="list ">
+              <li><a href="# ">Sports</a>
+              </li>
+              <li><a href="# ">Entertainment</a>
+              </li>
+              <li><a href="# ">Technology</a>
+              </li>
+              <li><a href="# ">Health</a>
+              </li>
+              <li><a href="# ">Education</a>
+              </li>
+            </ul>
+          </aside>
+          <aside class="card bg-secondary ">
+            <h2 class="l-heading ">Join our club</h2>
+            <p>proin sed vestibulum purus tempus aenean neque aliquam curae vivamus
+              purus </p>
+            <a class="btn btn-dark btn-block " href="# ">Join now</a>
+          </aside>
+        </div>
+      </div>
+    </section>
+    <footer id="main-footer" class="bg-dark">
+
+      <div class="container footer-container">
+        <div>
+          <img src="./img/logo_light.png" width=70%>
+          <p>
+            Lorem ipsum dolor sit amet adipiscing bibendum sem orci tempus aliquet gravida,
+            orci amet iaculis aptent blandit quam accumsan
+          </p>
+        </div>
+        <div>
+          <h3>EMAIL NEWSLETTER</h3>
+
+          <p>Lorem ipsum dolor sit amet adipiscing bibendum </p>
+          <form>
+            <input type="email" placeholder="Enter your email" name="email" id="Email">
+            <input type="submit" value="Subscribe" class="btn btn-primary">
+        </div>
+        <div>
+          <h3>SITE LINKS</h3>
+
+          <ul class="list">
+            <li><a href="#">Help&Support</a>
+            </li>
+            <li><a href="#">Privacy Policy</a</li>
+              <li><a href="#">About us</li>
+              <li><a href="#">Contact</a>
+            </li>
+          </ul>
+
+        </div>
+        <div>
+          <p>Lorem ipsum dolor</p>
+          <h2>JOIN OUR CLUB</h2>
+          <p>Lorem ipsum dolor sit amet adipiscing sem orci</p>
+          <a href="#" class="btn btn-secondary">JOIN</a>
+        </div>
+        <div class="footer">
+          <p>Copyright © 2021 all rights reserved
+            <p>
+        </div>
+      </div>
+    </footer>
+  </body>
+
+</html>
+<!--
+Visual Code Mobile
+Developed By Manish Nirmal
+App Available on Play Store :-
+https://play.google.com/store/apps/details?id=lk.visual.code.mobile
+YouTube :-
+https://youtube.com/ManishNirmal
+-->
